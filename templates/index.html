@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1f4037, #99f2c8);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 340px;
+            margin: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 92%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #4caf50;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            background: #2e7d32;
+            color: white;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b5e20;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>House Price Prediction App</h1>
+
+    <div class="box">
+        <form action="/predict" method="post">
+            <input type="number" name="area" placeholder="Area (sq ft)" min="500" max="5000" required>
+            <input type="number" name="bedrooms" placeholder="Bedrooms" min="1" max="10" required>
+            <input type="number" name="bath" placeholder="Bathrooms" min="1" max="5" required>
+            <input type="number" name="quality" placeholder="Overall Quality (1-10)" min="1" max="10" required>
+            <input type="number" name="year" placeholder="Year Built" min="1900" max="2025" required>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        <div class="result">
+            {{ prediction_text if prediction_text else "Enter values to predict price" }}
+        </div>
+    </div>
+
+</body>
+</html>
